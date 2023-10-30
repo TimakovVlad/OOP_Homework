@@ -23,7 +23,11 @@ class Mentor:
             return 'Ошибка'
             
             
+class Lecturer(Mentor)
+    pass
 
+class  Reviewer(Mentor)
+    pass
 
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
