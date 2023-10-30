@@ -102,5 +102,78 @@ class Reviewer(Mentor):
 
     def __str__(self):
         return f'Имя: {self.name}\nФамилия: {self.surname}'
-        
-        
+
+
+def average_grade_course_st(student, course):
+    av_gr = sum(student.grades[course]) / len(student.grades[course])
+    print(f'Средняя оценка по курсу {course} студента {student.name} {student.surname} составляет {round(av_gr, 1)}')
+    return round(av_gr, 1)
+
+def average_grade_course_lect(lecturer, course):
+    av_gr = sum(lecturer.grades[course]) / len(lecturer.grades[course])
+    print(f'Средняя оценка по курсу {course} лектора {lecturer.name} {lecturer.surname} составляет {round(av_gr, 1)}')
+    return round(av_gr, 1)
+
+
+
+
+
+best_student = Student('Дмитрий', 'Краснов', 'мужчина')
+best_student.courses_in_progress += ['Python']
+
+best_student.courses_in_progress += ['JavaScript']
+
+best_student.finished_courses += ['Введение в программирование']
+student_2 = Student('Елена', 'Пушилина', 'женщина')
+student_2.courses_in_progress += ['JavaScript']
+student_2.finished_courses += ['Введение в программирование']
+
+cool_reviewer_1 = Reviewer('Иван', 'Иванов')
+cool_reviewer_1.courses_attached += ['Python']
+cool_reviewer_2 = Reviewer('Алексей', 'Кузнецов')
+cool_reviewer_2.courses_attached += ['JavaScript']
+
+cool_mentor_1 = Mentor('Some', 'Buddy')
+cool_mentor_1.courses_attached += ['Python']
+cool_mentor_2 = Mentor('Another', 'Buddy')
+cool_mentor_2.courses_attached += ['JavaScript']
+
+cool_lecturer_1 = Lecturer('Борис', 'Палюх')
+cool_lecturer_1.courses_attached += ['Python']
+cool_lecturer_2 = Lecturer('Дмитрий', 'Мартынов')
+cool_lecturer_2.courses_attached += ['JavaScript']
+
+cool_reviewer_1.rate_hw(best_student, 'Python', 10)
+cool_reviewer_1.rate_hw(best_student, 'Python', 10)
+cool_reviewer_1.rate_hw(best_student, 'Python', 10)
+cool_reviewer_2.rate_hw(student_2, 'JavaScript', 9)
+cool_reviewer_2.rate_hw(student_2, 'JavaScript', 7)
+cool_reviewer_2.rate_hw(student_2, 'JavaScript', 10)
+
+
+cool_reviewer_2.rate_hw(best_student, 'JavaScript', 10)
+cool_reviewer_2.rate_hw(best_student, 'JavaScript', 10)
+cool_reviewer_2.rate_hw(best_student, 'JavaScript', 10)
+
+
+best_student.rate_hw(cool_lecturer_1, 'Python', 10)
+best_student.rate_hw(cool_lecturer_1, 'Python', 10)
+best_student.rate_hw(cool_lecturer_1, 'Python', 10)
+student_2.rate_hw(cool_lecturer_2, 'JavaScript', 8)
+student_2.rate_hw(cool_lecturer_2, 'JavaScript', 7)
+student_2.rate_hw(cool_lecturer_2, 'JavaScript', 10)
+
+
+print(best_student > student_2)
+print(cool_lecturer_1 < cool_lecturer_2)
+print(best_student)
+print(student_2)
+print(cool_lecturer_1)
+print(cool_lecturer_2)
+print(cool_reviewer_1)
+print(cool_reviewer_2)
+
+average_grade_course_st(best_student, 'Python')
+average_grade_course_lect(cool_lecturer_1, 'Python')
+average_grade_course_st(student_2, 'JavaScript')
+average_grade_course_lect(cool_lecturer_2, 'JavaScript')
